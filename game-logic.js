@@ -9,6 +9,8 @@ const Choice = Object.freeze({
     INVALID: Symbol("invalid")
 })
 
+let humanScore = 0
+let computerScore = 0
 
 
 
