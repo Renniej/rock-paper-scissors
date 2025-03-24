@@ -10,6 +10,9 @@ const Choice = Object.freeze({
 })
 
 
+
+
+
 function getHumanChoice() {
     const playerChoice = prompt("Choose between rock, paper, or scissors").toLocaleLowerCase().trim()
     if (playerChoice != Choice.SCISSORS.description && playerChoice != Choice.PAPER.description && playerChoice != Choice.ROCK.description) {
