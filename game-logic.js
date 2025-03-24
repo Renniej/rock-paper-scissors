@@ -18,7 +18,8 @@ let computerScore = 0
 function getHumanChoice() {
     const playerChoice = prompt("Choose between rock, paper, or scissors").toLocaleLowerCase().trim()
     if (playerChoice != Choice.SCISSORS.description && playerChoice != Choice.PAPER.description && playerChoice != Choice.ROCK.description) {
-        return Choice.INVALID
+        console.log(`'${prompt}' is an invalid choice. Try again`)
+        return getHumanChoice()
     } else {
         return playerChoice
     }
