@@ -68,7 +68,7 @@ function getHumanChoice() {
     const input = prompt("Choose between rock, paper, or scissors")?.toLocaleLowerCase().trim()
     const choice = Object.values(Choice).find(choice => choice.description == playerChoice)
 
-    if (choice == undefined || choice == undefined) { //invalid choice
+    if (choice == undefined || choice == null) { //invalid choice
         console.log(`'${prompt}' is an invalid choice. Try again`)
         return getHumanChoice()
     } else {
