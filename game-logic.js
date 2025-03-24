@@ -1,6 +1,5 @@
 
-console.log("Hello world")
-console.log(getComputerChoice())
+
 
 const Choice = Object.freeze({
     SCISSORS: Symbol("scissors"),
@@ -11,7 +10,7 @@ const Choice = Object.freeze({
 
 let humanScore = 0
 let computerScore = 0
-
+playGame()
 
 function playGame() {
 
@@ -66,7 +65,7 @@ function playRound(humanChoice, computerChoice){
 }
 
 function getHumanChoice() {
-    const input = prompt("Choose between rock, paper, or scissors").toLocaleLowerCase().trim()
+    const input = prompt("Choose between rock, paper, or scissors")?.toLocaleLowerCase().trim()
     const choice = Object.values(Choice).find(choice => choice.description == playerChoice)
 
     if (choice == undefined ) { //invalid choice
