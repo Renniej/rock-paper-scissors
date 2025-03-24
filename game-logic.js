@@ -3,17 +3,20 @@ console.log("Hello world")
 console.log(getComputerChoice())
 
 const Choice = Object.freeze({
-    SCISSORS : Symbol("Scissors"),
-    PAPER : Symbol("Paper"),
-    ROCK : Symbol("Rock"),
-    INVALID : Symbol("Invalid")
+    SCISSORS: Symbol("scissors"),
+    PAPER: Symbol("paper"),
+    ROCK: Symbol("rock"),
+    INVALID: Symbol("invalid")
 })
 
 
 function getHumanChoice() {
     const playerChoice = prompt("Choose between rock, paper, or scissors").toLocaleLowerCase().trim()
-
-
+    if (playerChoice != Choice.SCISSORS.description && playerChoice != Choice.PAPER.description && playerChoice != Choice.ROCK.description) {
+        return Choice.INVALID
+    } else {
+        return playerChoice
+    }
 }
 
 
