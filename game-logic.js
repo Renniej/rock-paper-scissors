@@ -10,32 +10,73 @@ const Choice = Object.freeze({
 
 let humanScore = 0
 let computerScore = 0
+let curRound = 1;
+const MAX_ROUNDS = 5;
+const displayTextElem = document.getElementById("display")
+
 playGame()
 
 function playGame() {
 
-    const ROUNDS = 5;
+    curRound = 1;
     humanScore = 0;
     computerScore = 0;
 
 
-    for (let i = 0; i < ROUNDS; ++i) {
-        const humanChoice = getHumanChoice()
-        const computerChoice = getComputerChoice()
-        playRound(humanChoice,computerChoice)
-    }
+    const rockBtn = {element :  document.getElementById("rock"), value : Choice.ROCK}
+    const paperBtn = {element: document.getElementById("paper"), value : Choice.PAPER}
+    const scissorsBtn = {element: document.getElementById("scissors"), value: Choice.SCISSORS}
 
-    if (humanScore > computerScore) {
-        console.log("[ Game Over ] You won the game!")
-    } else if (computerScore < humanScore) {
-        console.log("[ Game Over ] You lost! ):")
-    } else {
-        console.log("[ Game Over ] It's a tie!")
-    }
+    const listOfButtons = [rockBtn, paperBtn, scissorsBtn]
 
+    listOfButtons.forEach(btn => {
+        btn.element.addEventListener("click", e => {
+            if (curRound > MAX_ROUNDS) return;
+
+            const computerChoice = getComputerChoice()
+            const playerChoice = btn.value
+            playRound(playerChoice, computerChoice)
+            curRound++
+
+            if (curRound > MAX_ROUNDS) {
+                announceWinner()
+            } else {
+                displayScore()
+            }
+        })
+    })
+
+
+
+
+  
+
+   
 
 
 }
+
+function displayScore() {
+    const scoreMsg = `Player : ${humanScore} | Computer : ${computerScore}`
+    displayTextElem.innerText = scoreMsg
+}
+
+function announceWinner() {
+
+    let winnerMsg
+
+    if (humanScore > computerScore) {
+        winnerMsg = "[ Game Over ] You won the game!"
+    } else if (humanScore < computerScore) {
+        winnerMsg = "[ Game Over ] You lost! ):"
+    } else {
+         winnerMsg = "[ Game Over ] It's a tie!"
+    }
+
+    displayTextElem.innerText = winnerMsg
+}
+
+
 
 function playRound(humanChoice, computerChoice){
 
