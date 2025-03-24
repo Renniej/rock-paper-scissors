@@ -13,6 +13,24 @@ let humanScore = 0
 let computerScore = 0
 
 
+function playGame() {
+
+    const ROUNDS = 5;
+    humanScore = 0;
+    computerScore = 0;
+
+
+    for (let i = 0; i < ROUNDS; ++i) {
+        const humanChoice = getHumanChoice()
+        const computerChoice = getComputerChoice()
+        playRound(humanChoice,computerChoice)
+    }
+
+    
+
+
+}
+
 function playRound(humanChoice, computerChoice){
 
     let hasWon = false
