@@ -26,11 +26,11 @@ function playGame() {
     }
 
     if (humanScore > computerScore) {
-        console.log("You won the game!")
+        console.log("[ Game Over ] You won the game!")
     } else if (computerScore < humanScore) {
-        console.log("You lost! ):")
+        console.log("[ Game Over ] You lost! ):")
     } else {
-        console.log("It's a tie!")
+        console.log("[ Game Over ] It's a tie!")
     }
 
 
