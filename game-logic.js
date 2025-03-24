@@ -6,22 +6,49 @@ const Choice = Object.freeze({
     SCISSORS: Symbol("scissors"),
     PAPER: Symbol("paper"),
     ROCK: Symbol("rock"),
-    INVALID: Symbol("invalid")
+  
 })
 
 let humanScore = 0
 let computerScore = 0
 
 
+function playRound(humanChoice, computerChoice){
 
+    let hasWon = false
+
+    switch(humanChoice) {
+        case Choice.SCISSORS : 
+            hasWon = computerChoice == Choice.PAPER
+            break;
+        case Choice.PAPER : 
+            hasWon = computerChoice == Choice.ROCK
+        case Choice.ROCK :
+            hasWon = computerChoice == Choice.PAPER
+        break;
+    }
+
+
+    if (hasWon) {
+        console.log(`You win! ${humanChoice.description} beats ${computerChoice.description}`)
+        humanScore++
+    } else {
+        console.log(`You lose! ${computerChoice.description} beats ${humanChoice.description}`)
+        computerScore++
+    }
+
+
+}
 
 function getHumanChoice() {
-    const playerChoice = prompt("Choose between rock, paper, or scissors").toLocaleLowerCase().trim()
-    if (playerChoice != Choice.SCISSORS.description && playerChoice != Choice.PAPER.description && playerChoice != Choice.ROCK.description) {
+    const input = prompt("Choose between rock, paper, or scissors").toLocaleLowerCase().trim()
+    const choice = Object.values(Choice).find(choice => choice.description == playerChoice)
+
+    if (choice == undefined ) { //invalid choice
         console.log(`'${prompt}' is an invalid choice. Try again`)
         return getHumanChoice()
     } else {
-        return playerChoice
+        return choice
     }
 }
 
