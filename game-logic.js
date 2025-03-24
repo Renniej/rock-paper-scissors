@@ -66,7 +66,7 @@ function playRound(humanChoice, computerChoice){
 
 function getHumanChoice() {
     const input = prompt("Choose between rock, paper, or scissors")?.toLocaleLowerCase().trim()
-    const choice = Object.values(Choice).find(choice => choice.description == playerChoice)
+    const choice = Object.values(Choice).find(choice => choice.description == input)
 
     if (choice == undefined || choice == null) { //invalid choice
         console.log(`'${prompt}' is an invalid choice. Try again`)
